@@ -38,14 +38,16 @@ import { connect } from 'react-redux'
 import { loadRepos } from '../actions'
 
 class Repos extends React.Component {
+    // no local state
     componentDidMount() {
         const { loadRepos } = this.props
         loadRepos()
     }
 
     render() {
-        const { loading, repos } = this.props
+        const { loading, repos, err } = this.props
         if(loading) return <h1>Loading...</h1>
+        if(err) return <h1>{err}</h1>
 
         return <ul>
             {repos.map((repo) => {
@@ -57,10 +59,11 @@ class Repos extends React.Component {
 
 const mapStateToProps = (state) => {
     console.log(state)
-    const { repos : { loading, repos }} = state
+    const { repos : { loading, repos, err }} = state
     return {
         loading,
-        repos
+        repos,
+        err
     }
 }
 

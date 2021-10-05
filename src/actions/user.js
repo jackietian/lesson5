@@ -1,9 +1,7 @@
-export function changeUserName({ username }) {
-  return {
-    type: "CHNAGE_USERNAME",
-    username,
-  };
-}
+export const changeUserName = ({ username }) => ({
+  type: "CHANGE_USERNAME",
+  username,
+})
 
 export function changeStatus({ status }) {
   return {

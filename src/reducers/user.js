@@ -1,11 +1,12 @@
 const initialState = {
-    username: 'Jackie',
+    username: 'foo',
     status: 'offline',
+    gender: 'male'
 }
 
 export const user = (state = initialState, action) => {
     switch (action.type) {
-        case "CHNAGE_USERNAME":
+        case "CHANGE_USERNAME":
             // return Object.assign({}, state, { username: action.username });
             return {
                 ...state,

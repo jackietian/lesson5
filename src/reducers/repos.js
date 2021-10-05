@@ -1,6 +1,7 @@
 const initialState = {
     loading: false,
-    repos: []
+    repos: [],
+    err: null
 }
 
 export const repos = (state = initialState, action) => {
@@ -20,7 +21,8 @@ export const repos = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                repos: []
+                repos: [],
+                err: action.data.err
             }
         default: 
             return state
