@@ -58,7 +58,6 @@ class Repos extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state)
     const { repos : { loading, repos, err }} = state
     return {
         loading,

@@ -28,6 +28,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { changeUserName, changeStatus } from './actions'
 import Repos from './components/Repos'
+import Emojies from './components/Emojies'
+
+import "./App.css"
 
 class App extends React.Component {
   handleClick = () => {
@@ -52,6 +55,7 @@ class App extends React.Component {
       <button onClick={this.handleClick}>change name</button>
       <button onClick={this.handleChangeStatus}>toggle status</button>
       <Repos />
+      <Emojies />
     </div>
   }
 }
