@@ -24,83 +24,78 @@
 
 // export default App
 
-import React from 'react'
-import { connect } from 'react-redux'
-import { changeUserName, changeStatus } from './actions'
-import Repos from './components/Repos'
-import Emojies from './components/Emojies'
+import React from "react";
+import { connect } from "react-redux";
+import { changeUserName, changeStatus } from "./actions";
+import Repos from "./components/Repos";
+import Emojies from "./components/Emojies";
+import Dashboard from "./components/Dashboard";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import "./App.css"
+import "./App.css";
 
 class App extends React.Component {
   handleClick = () => {
-    const { changeUserName } = this.props
+    const { changeUserName } = this.props;
 
     changeUserName({
-      username: 'bar...'
-    })
-  }
+      username: "bar...",
+    });
+  };
 
   handleChangeStatus = () => {
-    const { changeStatus } = this.props
+    const { changeStatus } = this.props;
 
     changeStatus({
-      status: 'online'
-    })
-  }
+      status: "online",
+    });
+  };
 
   render() {
-    return <div>
-      <h1>Hello {this.props.username}! {this.props.status} {this.props.gender}</h1>
-      <button onClick={this.handleClick}>change name</button>
-      <button onClick={this.handleChangeStatus}>toggle status</button>
-      <Repos />
-      <Emojies />
-    </div>
+    return (
+      <Router>
+        <ul className="menu">
+          <li>
+            <Link to="/">Dashboard</Link>
+          </li>
+          <li>
+            <Link to="/repos">repos</Link>
+          </li>
+          <li>
+            <Link to="/emojies">emojies</Link>
+          </li>
+        </ul>
+
+        <Switch>
+          <Route exact path="/">
+            <Dashboard />
+          </Route>
+          <Route path="/repos">
+            <Repos />
+          </Route>
+          <Route path="/emojies">
+            <Emojies />
+          </Route>
+        </Switch>
+      </Router>
+    );
   }
 }
 
 const mapStateToProps = (state) => {
-  const { user: { username, status, gender } } = state
+  const {
+    user: { username, status, gender },
+  } = state;
   return {
     username,
     status,
     gender,
-  }
-}
+  };
+};
 
 const mapActionsToProps = {
   changeUserName,
   changeStatus,
-}
+};
 
-export default connect(mapStateToProps, mapActionsToProps)(App)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default connect(mapStateToProps, mapActionsToProps)(App);

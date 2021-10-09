@@ -1,12 +1,11 @@
 import { fetchEmojies } from "../api/emojies-api";
 
 export const loadEmojies = () => {
-  const callback = (dispatch) => {
+  return (dispatch) => {
     fetchEmojies()
       .then((res) => dispatch(loadEmojiesSuccess(res)))
       .catch((err) => dispatch(loadEmojiesFail(err)));
   };
-  return callback;
 };
 
 const loadEmojiesSuccess = (res) => {

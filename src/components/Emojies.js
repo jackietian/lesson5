@@ -6,7 +6,9 @@ const Emojies = () => {
   const { emojies } = useSelector((state) => ({
     emojies: state.emojies.emojies,
   }));
+
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(loadEmojies());
   }, []);
